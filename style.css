@@ -1,0 +1,93 @@
+/* 1. Force the page to lock to 100% of the screen height */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(141, 134, 222);
+    margin: 0;
+    padding: 15px;
+    height: 100vh;            /* 100vh = exactly 100% of the viewport height */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;   /* Stacks the header card and dashboard vertically */
+    overflow: hidden;         /* Completely blocks any vertical page scrolling */
+}
+h4 {
+    color: rgb(16, 16, 16)
+}
+header {
+    background: #ffffff;
+    padding: 15px;            /* Slightly reduced padding to save vertical space */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+    text-align: center;
+    flex-shrink: 0;           /* Prevents the header from getting squished */
+}
+
+.slider-container input {
+    width: 60%;
+    margin-top: 5px;
+}
+
+/* 2. The Dashboard claims ALL remaining vertical screen space */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;                /* Tighter spacing between rows */
+    flex-grow: 1;             /* Tells dashboard to stretch down to the bottom pixel */
+    min-height: 0;            /* Crucial flexbox fix to allow internal shrinking */
+}
+
+/* 3. Each row scales its height based on how many cities are in your array */
+.time-row {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 8px 15px;        /* Slimmer padding makes blocks significantly shorter */
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    flex-grow: 1;             /* Rows evenly divide the remaining space up */
+    min-height: 0;            /* Allows the row content to scale down nicely */
+}
+
+.city-info {
+    width: 160px;             /* Slightly thinner to give the timeline more room */
+    flex-shrink: 0;
+}
+
+.city-info h3 {
+    margin: 0 0 2px 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.city-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+/* 4. The 24-Hour strip stretches to match the height of the row */
+.hours-strip {
+    display: flex;
+    flex-grow: 1;
+    align-items: stretch;     /* Forces hourly blocks to fill the row height */
+    border-left: 2px solid #3498db;
+    padding-left: 10px;
+    height: 100%;             /* Fills the container row completely */
+}
+
+.hour-block {
+    flex: 1;
+    min-width: 30px;          /* Lowered min-width to avoid running off edges */
+    text-align: center;
+    display: flex;
+    align-items: center;      /* Vertically centers text inside shortened blocks */
+    justify-content: center;  /* Horizontally centers text */
+    font-size: 0.75rem;       /* Slightly smaller text font to stay clear */
+    border: 1px solid #edf2f7;
+    background: #fdfefe;
+}
+
+/* Keeps your background logic working smoothly */
+.hour-block.working-hour { background-color: #e8f4fd !important; color: #2980b9 !important; font-weight: bold; }
+.hour-block.selected-hour { background-color: #2ecc71 !important; color: white !important; }

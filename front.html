@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>World Clock | Abhinav Rana</title>
+        <link rel="icon" type="image/x-icon" href="profile.ico">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Time Convertor</h1>
+            <p>Drag the slider to match the time of the cities</p>
+            <div class="slider-container">
+                <label for="timeSlider">Adjust Time</label>
+                <input type="range" id="timeSlider" min="0" max="23" value="12">
+            </div>
+            <button id="resetBtn" class="reset-btn"> Reset to Current Time</button>
+        </header>
+        <main id="Dashboard" class="Dashboard"></main>
+        <script src="app.js"></script>
+        <h4>
+            This is my time convertor website made for matching timings<br>
+            of Meetings from distant countries with different time zones.
+        </h4>
+    </body>
+</html>
